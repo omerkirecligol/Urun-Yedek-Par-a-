@@ -1,0 +1,55 @@
+﻿@using MyChallenge.Entitiy
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container pb-5">
+
+    <h2>Product List</h2>
+    <hr/>
+    <p>
+        @Html.ActionLink("New Product", "Create" , null , new {@class = "btn btn-primary" })
+    </p>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th style="width : 300px ">
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            @*Spare Part Butonu Kullanılarak Sadece o ürüne ait yedek parçalar listelenir*@
+            @Html.ActionLink("Spare Parts", "PartOfProduct","SpareParts", new { id = item.Id}, new { @class = "btn btn-warning" })
+            
+        </td>
+    </tr>
+        }
+
+    </table>
+
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MyChallenge.Models.SparePartModel>
+
+@{
+    ViewBag.Title = "PartOfProduct";
+}
+
+<h2>PartOfProduct</h2>
+
+<p>
+    @Html.ActionLink("Create New Spare Part", "Create",new{code=ViewData["code"]}, new {@class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+           
+        </td>
+
+    </tr>
+}
+
+
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MyChallenge.Entitiy.SparePart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container pb-5">
+
+    <h2>Spare Part List</h2>
+    <hr/>
+    <p>
+        @Html.ActionLink("New Spare Part", "Create" , null , new {@class = "btn btn-primary" })
+    </p>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                Product Code
+            </th>
+            <th>
+                Part Code
+            </th>
+            <th>
+                Part Name
+            </th>
+            <th>
+                Part Price
+            </th>
+            <th style="width: 200px">
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+
+
+        </td>
+    </tr>
+        }
+
+    </table>
+
+</div>
